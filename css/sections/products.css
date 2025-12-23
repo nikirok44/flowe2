@@ -1,0 +1,218 @@
+/* ====== PRE-CATALOG (Frame 129) ====== */
+.precatalog {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    /* воздух снизу, чтобы не было “впритык” */
+
+    /* если нужно — подгони отступ от parallax/следующего блока */
+}
+
+.precatalog__row {
+    display: flex;
+    gap: 35px;
+    /* как в фигме */
+    align-items: flex-start;
+}
+
+/* ====== CARD ====== */
+.bouquet-card {
+    width: 450px;
+    height: 592px;
+    position: relative;
+    /* ВАЖНО: чтобы абсолютные элементы не улетали */
+}
+
+/* Медиа */
+.bouquet-card__media {
+    position: relative;
+    /* ВАЖНО: цена/название/точки привязываются к фото */
+    width: 450px;
+    height: 550px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* “тень” снизу как в макете */
+.bouquet-card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 80.29%, rgba(0, 0, 0, 0.5) 100%);
+    pointer-events: none;
+    z-index: 2;
+    /* тень */
+}
+
+/* Цена (красный круг) */
+.bouquet-card__price {
+    position: absolute;
+    left: 340px;
+    top: 492px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+
+    background: #A71111;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 5;
+    /* ВЫШЕ тени, текста и т.д. */
+}
+
+.bouquet-card__price-value {
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 110%;
+    color: #F5F5F5;
+}
+
+
+/* Слайды */
+.bouquet-card__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    opacity: 0;
+    transition: opacity .25s ease;
+    z-index: 1;
+}
+
+.bouquet-card__img.is-active {
+    opacity: 1;
+}
+
+/* Название (слева снизу) */
+.bouquet-card__name {
+    position: absolute;
+    left: 15px;
+    top: 492px;
+    width: 200px;
+    height: 48px;
+
+    font-family: "DRUZHOK";
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 85%;
+    color: #F5F5F5;
+
+    z-index: 3;
+}
+
+/* “Букет недели” (только у первой карточки) */
+.bouquet-card__badge {
+    position: absolute;
+    left: 337px;
+    top: 10px;
+
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #F5F5F5;
+    border-radius: 50%;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 110%;
+    text-align: center;
+    color: #A71111;
+
+    z-index: 4;
+    /* выше оверлея/градиента */
+    padding: 0 8px;
+    /* чтобы текст не прилипал к краям круга */
+}
+
+/* ВАЖНО: раньше тут был ::before — теперь он НЕ нужен */
+.bouquet-card__badge::before {
+    content: none;
+}
+
+
+
+/* Точки снизу (3 кружка) */
+.bouquet-card__dots {
+    position: absolute;
+    left: 186px;
+    top: 519px;
+
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+
+.bouquet-card__dot {
+    width: 19px;
+    height: 19px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+
+    background: rgba(227, 229, 217, 0.5);
+    transition: transform .15s ease, background .15s ease;
+}
+
+.bouquet-card__dot.is-active {
+    background: #F5F5F5;
+}
+
+.bouquet-card__dot:active {
+    transform: scale(0.95);
+}
+
+/* ====== PRE-CATALOG bottom (quote + button) ====== */
+.precatalog__bottom {
+    margin-top: 60px;
+    margin-left: 700px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    /* ключевое */
+}
+
+/* цитата */
+.precatalog__quote {
+    margin: 0;
+    width: 424px;
+    font-family: "Martina scriptC";
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 110%;
+    color: #A71111;
+}
+
+/* кнопка */
+.precatalog__catalog-btn {
+    width: 133px;
+    height: 133px;
+    border-radius: 50%;
+    border: 2px solid #191818;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 140%;
+    color: #191818;
+
+    flex: 0 0 133px;
+    /* чтобы не сжималась */
+}

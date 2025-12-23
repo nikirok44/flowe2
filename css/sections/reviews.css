@@ -1,0 +1,94 @@
+/* ===== REVIEWS ===== */
+.reviews {
+  margin-top: 60px; /* подгони отступ от FAQ */
+}
+
+.reviews__row {
+  display: flex;
+  gap: 35px;              /* как в Figma */
+  align-items: center;
+}
+
+/* CARD */
+.review-card {
+  width: 450px;
+  height: 496px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* круглая фотка 300x300 */
+.review-card__avatar {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  z-index: 2;
+}
+
+/* нижний блок 450x226 с радиусом 54, начинается с y=270 */
+.review-card__box {
+  width: 450px;
+  height: 226px;
+  margin-top: -30px;      /* лёгкое “наложение” как в макете */
+  padding-top: 60px;      /* чтобы текст оказался ниже круга */
+  box-sizing: border-box;
+
+  border: 1px solid #191818;
+  border-radius: 54px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
+
+  background: transparent; /* как в макете */
+}
+
+/* Текст внутри */
+.review-card__name {
+  margin: 0;
+  width: 248px;
+
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 110%;
+  text-align: center;
+  color: #191818;
+}
+
+.review-card__text {
+  margin: 0;
+  width: 248px;
+
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  text-align: center;
+  color: #191818;
+}
+
+.review-card__date {
+  width: 248px;
+
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  text-align: center;
+  color: #191818;
+}
+
+/* На небольших экранах — переносим карточки */
+@media (max-width: 1100px) {
+  .reviews__row {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

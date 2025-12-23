@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Букетная лавка</title>
+
+  <!-- base -->
+  <link rel="stylesheet" href="css/base/reset.css" />
+  <link rel="stylesheet" href="css/base/variables.css" />
+  <link rel="stylesheet" href="css/base/typography.css" />
+
+  <!-- layout -->
+  <link rel="stylesheet" href="css/layout/grid.css" />
+  <link rel="stylesheet" href="css/layout/header.css" />
+  <link rel="stylesheet" href="css/layout/footer.css" />
+
+  <!-- sections -->
+  <link rel="stylesheet" href="css/sections/hero.css" />
+  <link rel="stylesheet" href="css/sections/categories.css" />
+  <link rel="stylesheet" href="css/sections/products.css" />
+  <link rel="stylesheet" href="css/sections/features.css" />
+  <link rel="stylesheet" href="css/sections/parallax.css" />
+  <link rel="stylesheet" href="css/sections/about.css" />
+  <link rel="stylesheet" href="css/sections/faq.css" />
+  <link rel="stylesheet" href="css/sections/reviews.css" />
+  <link rel="stylesheet" href="css/sections/delivery.css" />
+
+  <!-- main (overrides) -->
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+
+<body>
+  <!-- Имитация Desktop Frame 1600px как в Figma -->
+  <div class="page-frame">
+
+    <!-- HEADER (вставлен напрямую) -->
+    <header class="header">
+      <div class="header__container container">
+
+        <a class="logo" href="index.html">
+          <span class="logo__title">Букетная лавка</span>
+          <span class="logo__city">в Ноябрьске</span>
+        </a>
+
+        <nav class="nav" aria-label="Навигация">
+          <a class="nav__link nav__link--active" href="index.html">ГЛАВНАЯ</a>
+          <a class="nav__link" href="#catalog">КАТАЛОГ</a>
+          <a class="nav__link" href="#corp">КОРПОРАТИВНЫМ КЛИЕНТАМ</a>
+        </nav>
+
+        <a class="cart" href="#">
+          <span class="cart__text">КОРЗИНА</span>
+        </a>
+
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero__stage">
+
+            <!-- ТЕКСТ -->
+            <div class="hero__text">
+              <span class="hero__line hero__line--script hero__line--np">не просто</span>
+              <span class="hero__line hero__line--display hero__line--bouquets">букеты,</span>
+
+              <span class="hero__line hero__line--script hero__line--a">а</span>
+              <span class="hero__line hero__line--display hero__line--impr">впечатления</span>
+            </div>
+
+            <!-- КАРТИНКИ -->
+            <div class="hero__images" aria-hidden="true">
+              <img src="assets/images/hero/bouquet.png" alt="" class="hero__image hero__image--front" />
+              <img src="assets/images/hero/bouquet.png" alt="" class="hero__image hero__image--back" />
+            </div>
+
+            <!-- ОПИСАНИЕ -->
+            <p class="hero__desc">
+              Современные букеты<br>
+              и экзотические цветы<br>
+              с доставкой от 60 минут
+            </p>
+
+            <!-- КНОПКА -->
+            <a class="hero__btn" href="#order">ЗАКАЗАТЬ</a>
+
+          </div>
+        </div>
+      </section>
+      <section class="features">
+        <div class="container">
+          <div class="features__wrap">
+
+            <h2 class="features__title">
+              Цветы,<br>
+              которые вдохновляют
+            </h2>
+
+            <div class="features__list">
+
+              <div class="features__item">
+                <p>Работаем в духе мировых флористических трендов</p>
+                <span></span>
+              </div>
+
+              <div class="features__item">
+                <p>Доставка от 60 минут!</p>
+                <span></span>
+              </div>
+
+              <div class="features__item">
+                <p>Цветы приезжают 2–3 раза в неделю — только свежие!</p>
+                <span></span>
+              </div>
+
+              <div class="features__item">
+                <p>Экзотика под заказ к вашему событию!</p>
+                <span></span>
+              </div>
+
+              <div class="features__item">
+                <p>Лояльные цены и честные условия</p>
+                <span></span>
+              </div>
+
+              <div class="features__item">
+                <p>Более 10 000 букетов в год — любимое место горожан</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section> <!-- ✅ закрыли features -->
+      <section class="parallax">
+        <div class="parallax__bg"></div>
+
+        <h2 class="parallax__title" data-parallax-title>
+          Найдите свой<br>идеальный<br>букет
+        </h2>
+      </section>
+      <section class="precatalog" id="precatalog">
+        <div class="container">
+          <div class="precatalog__row">
+
+            <!-- CARD 1 -->
+            <article class="bouquet-card" data-slider>
+              <!-- ЦЕНА -->
+              <div class="bouquet-card__price">
+                <span class="bouquet-card__price-value">3.990</span>
+              </div>
+              <div class="bouquet-card__media">
+                <!-- СЛАЙДЫ -->
+                <img class="bouquet-card__img is-active" src="assets/images/hero/bouquet_catalog.png" alt="Букет 1"
+                  data-slide="0">
+                <img class="bouquet-card__img" src="assets/images/hero/bouquet_catalog.png" alt="Букет 2"
+                  data-slide="1">
+                <img class="bouquet-card__img" src="assets/images/hero/bouquet_catalog.png" alt="Букет 3"
+                  data-slide="2">
+
+                <!-- ЛЕЙБЛ (только у первой карточки) -->
+                <div class="bouquet-card__badge">Букет<br>недели</div>
+
+                <!-- НАЗВАНИЕ -->
+                <div class="bouquet-card__name">Название<br>букета</div>
+
+
+
+                <!-- ТОЧКИ -->
+                <div class="bouquet-card__dots" role="tablist" aria-label="Переключение фото">
+                  <button class="bouquet-card__dot is-active" type="button" data-dot="0" aria-label="Фото 1"></button>
+                  <button class="bouquet-card__dot" type="button" data-dot="1" aria-label="Фото 2"></button>
+                  <button class="bouquet-card__dot" type="button" data-dot="2" aria-label="Фото 3"></button>
+                </div>
+              </div>
+
+            </article>
+
+            <!-- CARD 2 -->
+            <article class="bouquet-card" data-slider>
+              <div class="bouquet-card__price">
+                <span class="bouquet-card__price-value">3.990</span>
+              </div>
+              <div class="bouquet-card__media">
+
+                <img class="bouquet-card__img is-active" src="assets/images/hero/bouquet_catalog.png" alt="Букет 1"
+                  data-slide="0">
+                <img class="bouquet-card__img" src="assets/images/hero/bouquet_catalog.png" alt="Букет 2"
+                  data-slide="1">
+                <img class="bouquet-card__img" src="assets/images/hero/bouquet_catalog.png" alt="Букет 3"
+                  data-slide="2">
+
+                <div class="bouquet-card__name">Название<br>букета</div>
+
+
+
+                <div class="bouquet-card__dots" role="tablist" aria-label="Переключение фото">
+                  <button class="bouquet-card__dot is-active" type="button" data-dot="0" aria-label="Фото 1"></button>
+                  <button class="bouquet-card__dot" type="button" data-dot="1" aria-label="Фото 2"></button>
+                  <button class="bouquet-card__dot" type="button" data-dot="2" aria-label="Фото 3"></button>
+                </div>
+              </div>
+            </article>
+
+            <!-- CARD 3 -->
+            <article class="bouquet-card" data-slider>
+              <div class="bouquet-card__price">
+                <span class="bouquet-card__price-value">3.990</span>
+              </div>
+              <div class="bouquet-card__media">
+                <img class="bouquet-card__img is-active" src="assets/images/hero/bouquet_catalog.png" alt="Букет 1"
+                  data-slide="0">
+                <img class="bouquet-card__img" src="assets/images/hero/bouquet_catalog.png" alt="Букет 2"
+                  data-slide="1">
+                <img class="bouquet-card__img" src="assets/images/hero/bouquet_catalog.png" alt="Букет 3"
+                  data-slide="2">
+
+                <div class="bouquet-card__name">Название<br>букета</div>
+
+
+
+                <div class="bouquet-card__dots" role="tablist" aria-label="Переключение фото">
+                  <button class="bouquet-card__dot is-active" type="button" data-dot="0" aria-label="Фото 1"></button>
+                  <button class="bouquet-card__dot" type="button" data-dot="1" aria-label="Фото 2"></button>
+                  <button class="bouquet-card__dot" type="button" data-dot="2" aria-label="Фото 3"></button>
+                </div>
+              </div>
+            </article>
+
+          </div>
+          <!-- НИЗ: ЦИТАТА + КНОПКА -->
+          <div class="precatalog__bottom">
+            <p class="precatalog__quote">
+              “Каждый букет особенный, и мы<br>
+              это чувствуем”
+            </p>
+
+            <a class="precatalog__catalog-btn" href="#catalog">
+              СМОТРЕТЬ<br>КАТАЛОГ
+            </a>
+          </div>
+        </div>
+
+
+      </section>
+
+      <section class="about" id="about">
+        <div class="container">
+          <div class="about__stage">
+
+            <h2 class="about__title">Кто мы</h2>
+            <p class="about__subtitle">Букетная лавка — место, где цветы говорят за вас</p>
+
+            <!-- круги -->
+            <div class="about__stats" aria-label="Статистика">
+              <div class="stat-circle stat-circle--xl">
+                <div class="stat-circle__content">
+                  <div class="stat-circle__num stat-circle__num--xl">10.000</div>
+                  <div class="stat-circle__text">Композиций в год</div>
+                </div>
+              </div>
+
+              <div class="stat-circle stat-circle--sm">
+                <div class="stat-circle__content">
+                  <div class="stat-circle__num">7</div>
+                  <div class="stat-circle__text">Дней в неделю</div>
+                </div>
+              </div>
+
+              <div class="stat-circle stat-circle--md">
+                <div class="stat-circle__content">
+                  <div class="stat-circle__num">20-40</div>
+                  <div class="stat-circle__text">Букетов<br>ежедневно</div>
+                </div>
+              </div>
+
+              <div class="stat-circle stat-circle--lg">
+                <div class="stat-circle__content">
+                  <div class="stat-circle__num">900+</div>
+                  <div class="stat-circle__text">Клиентов, которые<br>нам доверяют</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- большое фото -->
+            <img class="about__photo" src="assets/images/hero/about_big.png" alt="Команда Букетной лавки">
+
+            <!-- подпись снизу -->
+            <p class="about__note">Радуем вас свежими цветами уже более 3-ех лет!</p>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="faq">
+        <div class="container">
+
+          <h2 class="faq__title">FAQ</h2>
+
+          <div class="faq__inner">
+
+            <div class="faq__item">
+              <button class="faq__question" type="button" aria-expanded="false">
+                <span class="faq__qtext">Замена цветов</span>
+                <span class="faq__icon"></span>
+              </button>
+              <div class="faq__answer" hidden>
+                <p>
+                  Если цветы при получении имеют ненадлежащее качество — мы их заменим.<br>
+                  <span class="faq__note">
+                    В остальных случаях возврат невозможен (в соответствии с законом).
+                  </span>
+                </p>
+              </div>
+            </div>
+
+            <div class="faq__item">
+              <button class="faq__question" type="button" aria-expanded="false">
+                <span class="faq__qtext">Быстрая доставка по Ноябрьску</span>
+                <span class="faq__icon"></span>
+              </button>
+              <div class="faq__answer" hidden>…</div>
+            </div>
+
+            <div class="faq__item">
+              <button class="faq__question" type="button" aria-expanded="false">
+                <span class="faq__qtext">Анонимность</span>
+                <span class="faq__icon"></span>
+              </button>
+              <div class="faq__answer" hidden>Всегда</div>
+            </div>
+
+            <div class="faq__item">
+              <button class="faq__question" type="button" aria-expanded="false">
+                <span class="faq__qtext">Оплата без лишних шагов</span>
+                <span class="faq__icon"></span>
+              </button>
+              <div class="faq__answer" hidden>…</div>
+            </div>
+
+            <div class="faq__item">
+              <button class="faq__question" type="button" aria-expanded="true">
+                <span class="faq__qtext">Мы гарантируем качество</span>
+                <span class="faq__icon"></span>
+              </button>
+              <div class="faq__answer">
+                <p>
+                  Если цветы при получении имеют ненадлежащее качество — мы их заменим.<br>
+                  <span class="faq__note">
+                    В остальных случаях возврат невозможен (в соответствии с законом).
+                  </span>
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <section class="reviews" id="reviews">
+        <div class="container">
+          <div class="reviews__row">
+
+            <!-- CARD 1 -->
+            <article class="review-card">
+              <img class="review-card__avatar" src="assets/images/hero/review_avatar.png" alt="Иван Иванов">
+              <div class="review-card__box">
+                <h3 class="review-card__name">Иван Иванов</h3>
+                <p class="review-card__text">Лучшие букеты в Ноябрьске!</p>
+                <time class="review-card__date" datetime="2025-11-15">15.11.2025</time>
+              </div>
+            </article>
+
+            <!-- CARD 2 -->
+            <article class="review-card">
+              <img class="review-card__avatar" src="assets/images/hero/review_avatar.png" alt="Иван Иванов">
+              <div class="review-card__box">
+                <h3 class="review-card__name">Иван Иванов</h3>
+                <p class="review-card__text">Лучшие букеты в Ноябрьске!</p>
+                <time class="review-card__date" datetime="2025-11-15">15.11.2025</time>
+              </div>
+            </article>
+
+            <!-- CARD 3 -->
+            <article class="review-card">
+              <img class="review-card__avatar" src="assets/images/hero/review_avatar.png" alt="Иван Иванов">
+              <div class="review-card__box">
+                <h3 class="review-card__name">Иван Иванов</h3>
+                <p class="review-card__text">Лучшие букеты в Ноябрьске!</p>
+                <time class="review-card__date" datetime="2025-11-15">15.11.2025</time>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+    </main>
+
+    <!-- FOOTER (вставлен напрямую) -->
+    <footer class="footer">
+      <div class="footer__container container">
+
+        <div class="footer__left">
+          <span class="footer__logo">Букетная лавка</span>
+          <span class="footer__copyright">
+            © Букетная лавка, 2025
+          </span>
+        </div>
+
+        <div class="footer__right">
+          <a href="#" class="footer__link">Политика конфиденциальности</a>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>

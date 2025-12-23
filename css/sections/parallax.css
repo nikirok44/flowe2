@@ -1,0 +1,63 @@
+.parallax {
+  margin-top: 224px;
+  position: relative;
+  height: 860px;
+  overflow: hidden;
+}
+
+/* Фон (верхние 614px) */
+.parallax__bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 614px;
+
+  background:
+    linear-gradient(rgba(193, 21, 21, 0.3), rgba(193, 21, 21, 0.3)),
+    url("../../assets/images/hero/flowers_parallax.png");
+  background-size: cover;
+  background-position: center;
+
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+/* Заголовок: один слой, цвет режем “строго” по границе картинки */
+.parallax__title {
+  position: absolute;
+  left: 798px;
+
+  /* стартовое значение (JS будет менять) */
+  top: 583px;
+
+  width: 712px;
+  height: 240px;
+
+  font-family: "DRUZHOK";
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 0.9998;
+
+  margin: 0;
+  z-index: 2;
+
+  /* Ключевая штука: делаем текст прозрачным, а цвет рисуем фоном */
+  color: transparent;
+
+  /* Переменная, которую будет ставить JS: сколько пикселей сверху белым */
+  --cut: 0px;
+
+  background: linear-gradient(
+    to bottom,
+    #ffffff 0,
+    #ffffff var(--cut),
+    #191818 var(--cut),
+    #191818 100%
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  will-change: top, background;
+}

@@ -1,0 +1,81 @@
+.header{
+  background: transparent; /* фон задаём body */
+}
+
+.header__container{
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO (206 x 93) */
+.logo{
+  width: 206px;
+  height: 93px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
+}
+
+.logo__title{
+  font-family: "Martina scriptC", cursive;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 140%;
+  color: var(--text);
+}
+
+.logo__city{
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 110%;
+  color: var(--accent);
+}
+
+/* NAV block size from Figma */
+.nav{
+  width: 249px;     /* Frame 116 */
+  height: 93px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
+  gap: 15px;
+}
+
+/* Menu font from Figma */
+.nav__link{
+  font-family: "Roboto Condensed", "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 25px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text);
+}
+
+/* CART (94 x 92, radius 51) */
+.cart{
+  width: 94px;
+  height: 92px;
+  border-radius: 51px;
+  border: 1px solid var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.cart__text{
+  font-family: "Roboto Condensed", "Inter", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  text-transform: uppercase;
+  color: var(--text);
+}

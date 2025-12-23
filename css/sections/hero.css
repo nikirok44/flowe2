@@ -1,0 +1,122 @@
+.hero{
+  /* В Figma hero начинается на top:200 от страницы.
+     Header у нас ~170, значит для совпадения ставим 30. */
+  margin-top: 30px;
+}
+
+.hero__stage{
+  position: relative;
+  height: 814px;   /* как в синей рамке 1333x814 */
+}
+
+/* --- ТЕКСТЫ (позиции считаем относительно контейнера 1420, который в Figma начинается с left:90) --- */
+/* В Figma:
+   "не просто" left:177 top:200
+   => внутри container: left = 177-90 = 87, top внутри hero = 200-200 = 0
+*/
+.hero__line{
+  position: absolute;
+  color: #191818;
+  white-space: nowrap;
+}
+
+.hero__line--script{
+  font-family: "Martina scriptC";
+  font-weight: 400;
+  font-size: 200px;
+  line-height: 1; /* 100% */
+}
+
+.hero__line--display{
+  font-family: "DRUZHOK";
+  font-weight: 400;
+  font-size: 130px;
+  line-height: 1; /* 100% */
+}
+
+/* Позиции строк (из Figma, пересчитаны относительно container и hero) */
+.hero__line--np{      left: 87px;  top: 0px; }     /* 177-90, 200-200 */
+.hero__line--bouquets{left: 228px; top: 229px; }   /* 318-90, 429-200 */
+.hero__line--a{       left: 173px; top: 320px; }   /* 263-90, 520-200 */
+.hero__line--impr{    left: 275px; top: 389px; }   /* 365-90, 589-200 */
+
+/* --- КАРТИНКИ --- */
+.hero__images{
+  position: absolute;
+  right: 90px;   /* справа как в макете от границы контейнера */
+  top: 0px;
+  width: 260px;
+  height: 320px;
+}
+
+/* передняя */
+.hero__image--front{
+  position: absolute;
+  width: 202px;
+  height: 270px;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  object-fit: cover;
+}
+
+/* задняя: прозрачнее и под углом */
+.hero__image--back{
+  position: absolute;
+  width: 179.09px;
+  height: 238.79px;
+  right: 0;
+  top: 56px;             /* как в фигме */
+  opacity: 0.5;
+  transform: rotate(15deg);
+  z-index: 1;
+  object-fit: cover;
+  filter: saturate(0.95);
+}
+
+/* --- ОПИСАНИЕ --- */
+/* В Figma: left: calc(50% - 234/2 + 117) => по факту около x=800 на ширине 1600
+   Отнимаем container left 90 => x=710
+   top: 773 => внутри hero: 573
+*/
+.hero__desc{
+  position: absolute;
+  left: 710px;
+  top: 573px;
+
+  margin: 0;
+  width: 234px;
+
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  color: #191818;
+  text-align: left;
+}
+
+/* --- КНОПКА --- */
+/* В Figma: left ~802 => 802-90 = 712; top: 881 => внутри hero: 681 */
+.hero__btn{
+  position: absolute;
+  left: 712px;
+  top: 681px;
+
+  width: 133px;
+  height: 133px;
+  border-radius: 65px;
+
+  background: #A71111;
+  color: #F5F5F5;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 140%;
+  text-transform: uppercase;
+}

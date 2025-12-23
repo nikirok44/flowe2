@@ -1,0 +1,190 @@
+/* css/sections/faq.css */
+
+.faq {
+  margin-top: 224px;
+  /* если нужно — подгони по макету */
+}
+
+.faq__title {
+  margin: 0 0 60px;
+  font-family: "DRUZHOK";
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 0.9998;
+  color: #191818;
+}
+
+/* список */
+.faq__list {
+  width: 710px;
+  /* как в макете */
+}
+
+/* разделитель сверху/снизу */
+.faq__item {
+  border-top: 1px solid #191818;
+}
+
+.faq__item:last-child {
+  border-bottom: 1px solid #191818;
+}
+
+/* строка-вопрос */
+.faq__question {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  padding: 18px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.faq__qtext {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 110%;
+  color: #191818;
+}
+
+/* плюс/минус */
+.faq__icon {
+  width: 27px;
+  height: 27px;
+  position: relative;
+  flex: 0 0 27px;
+}
+
+.faq__icon::before,
+.faq__icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1.42px;
+  height: 27px;
+  background: #191818;
+  transform: translate(-50%, -50%);
+}
+
+.faq__icon::after {
+  width: 27px;
+  height: 1.42px;
+}
+
+/* когда открыт — вертикальную палку убираем (получается минус) */
+.faq__item.is-open .faq__icon::before {
+  opacity: 0;
+}
+
+/* ответ */
+.faq__answer {
+  padding: 0 0 18px;
+}
+
+.faq__answer p {
+  margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 150%;
+  color: rgba(25, 24, 24, 0.5);
+  max-width: 704px;
+}
+
+.faq__inner {
+  width: 710px;
+  /* как в фигме */
+  margin-left: auto;
+  /* 🔥 КЛЮЧЕВОЕ */
+}
+
+/* === позиционирование FAQ ближе к правому краю === */
+.faq__wrap {
+  width: 710px;
+  /* как в Figma */
+  margin-left: auto;
+  /* прижимаем вправо внутри .container */
+}
+
+.faq__title {
+  width: 710px;
+  margin-left: auto;   /* ← выравниваем вправо */
+  margin-bottom: 40px;
+}
+/* линии как в макете */
+.faq__item {
+  border-top: 1px solid #191818;
+  border-bottom: 1px solid #191818;
+  padding: 24px 0;
+  /* ← ВОТ ОН, визуальный воздух */
+}
+
+.faq__item:last-child {
+  border-bottom: 1px solid #191818;
+}
+
+/* обёртка внутри item */
+.faq__inner {
+  padding: 30px 0;
+  /* gap 30px по фигме */
+  max-width: 710px;
+  margin-left: auto;
+  /* вот это сдвигает блок к правому краю контейнера */
+}
+
+/* вопросная строка */
+.faq__question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* плюс/минус (если у тебя сделано по-другому — скажи, подстрою под твой вариант) */
+.faq__icon {
+  width: 27px;
+  height: 27px;
+  position: relative;
+  flex: 0 0 27px;
+}
+
+.faq__icon::before,
+.faq__icon::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 27px;
+  height: 1.42px;
+  background: #191818;
+  transform: translate(-50%, -50%);
+}
+
+.faq__icon::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+/* когда раскрыто — превращаем плюс в минус */
+.faq__question[aria-expanded="true"] .faq__icon::after {
+  opacity: 0;
+}
+
+
+
+.faq__answer p {
+  margin: 0;
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  color: rgba(25, 24, 24, 0.5);
+}
+.faq__note {
+  color: rgba(25, 24, 24, 0.5);
+}
