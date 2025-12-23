@@ -10,8 +10,8 @@ body{
 @font-face {
   font-family: "Martina scriptC";
   src:
-    url("/assets/fonts/script/MartinascriptC.woff2") format("woff2"),
-    url("/assets/fonts/script/MartinascriptC.woff") format("woff");
+    url("../../assets/fonts/script/MartinascriptC.woff2") format("woff2"),
+    url("../../assets/fonts/script/MartinascriptC.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -19,12 +19,13 @@ body{
 @font-face {
   font-family: "DRUZHOK";
   src:
-    url("/assets/fonts/script/DRUZHOK.woff2") format("woff2"),
-    url("/assets/fonts/script/DRUZHOK.woff") format("woff");
+    url("../../assets/fonts/script/DRUZHOK.woff2") format("woff2"),
+    url("../../assets/fonts/script/DRUZHOK.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
+
 
 
 
