@@ -1,8 +1,9 @@
-.header{
-  background: transparent; /* фон задаём body */
+.header {
+  background: transparent;
+  /* фон задаём body */
 }
 
-.header__container{
+.header__container {
   height: 170px;
   display: flex;
   align-items: center;
@@ -10,7 +11,7 @@
 }
 
 /* LOGO (206 x 93) */
-.logo{
+.logo {
   width: 206px;
   height: 93px;
   display: flex;
@@ -20,7 +21,7 @@
   text-align: center;
 }
 
-.logo__title{
+.logo__title {
   font-family: "Martina scriptC", cursive;
   font-weight: 400;
   font-size: 50px;
@@ -28,7 +29,7 @@
   color: var(--text);
 }
 
-.logo__city{
+.logo__city {
   font-family: "Inter", system-ui, sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -37,8 +38,9 @@
 }
 
 /* NAV block size from Figma */
-.nav{
-  width: 249px;     /* Frame 116 */
+.nav {
+  width: 249px;
+  /* Frame 116 */
   height: 93px;
   display: flex;
   flex-direction: column;
@@ -49,7 +51,7 @@
 }
 
 /* Menu font from Figma */
-.nav__link{
+.nav__link {
   font-family: "Roboto Condensed", "Inter", system-ui, sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -60,7 +62,7 @@
 }
 
 /* CART (94 x 92, radius 51) */
-.cart{
+.cart {
   width: 94px;
   height: 92px;
   border-radius: 51px;
@@ -71,7 +73,7 @@
   text-decoration: none;
 }
 
-.cart__text{
+.cart__text {
   font-family: "Roboto Condensed", "Inter", system-ui, sans-serif;
   font-weight: 400;
   font-size: 16px;
@@ -79,3 +81,23 @@
   text-transform: uppercase;
   color: var(--text);
 }
+
+/* двигаем только ВИЗУАЛЬНО (layout не ломаем) */
+.logo {
+  transform: translateX(var(--logo-shift, 0px));
+  will-change: transform;
+}
+
+.cart {
+  transform: translateX(var(--cart-shift, 0px));
+  will-change: transform;
+}
+
+/* ===== MOBILE HEADER + OVERLAY MENU ===== */
+
+/* по умолчанию (десктоп) */
+.m-header__burger,
+.mnav {
+  display: none;
+}
+

@@ -1,6 +1,7 @@
 // js/main.js
 console.log("Project flower loaded");
 
+// === PARALLAX (bg + title move + cut for white overlay) ===
 (function () {
   const section = document.querySelector(".parallax");
   if (!section) return;
@@ -9,55 +10,71 @@ console.log("Project flower loaded");
   const title = section.querySelector("[data-parallax-title]");
   if (!bg || !title) return;
 
-  // Настройки
-  const BG_AMPLITUDE = 140;     // амплитуда движения фона (px)
-  const BG_SPEED = 0.25;        // скорость параллакса фона
-  const TITLE_START_TOP = 1500; // стартовая позиция заголовка (как тебе подходит)
-  const TITLE_END_TOP = 240;    // конечная позиция (подгони под макет)
+  const BG_AMPLITUDE = 140;
+  const BG_SPEED = 0.25;
+  const TITLE_START_TOP = 1500;
+  const TITLE_END_TOP = 240;
 
   const clamp01 = (v) => Math.max(0, Math.min(1, v));
 
+  let ticking = false;
+
   function update() {
+    ticking = false;
+
     const rect = section.getBoundingClientRect();
     const vh = window.innerHeight;
 
-    // секция вне экрана — ничего не делаем
+    // если секция сильно вне экрана — не считаем
     if (rect.bottom < 0 || rect.top > vh) return;
 
-    // progress: 0..1 пока секция входит на экран
     const progress = clamp01((vh - rect.top) / vh);
 
-    // 1) параллакс фона
+    // 1) фон — ТОЛЬКО Y через переменную
     const bgShift = (progress - 0.5) * BG_AMPLITUDE * BG_SPEED;
-    bg.style.transform = `translate3d(0, ${bgShift}px, 0)`;
+    bg.style.setProperty("--bg-y", `${bgShift}px`);
 
-    // 2) движение заголовка (снизу вверх)
+    // 2) заголовок
     const titleTop = TITLE_START_TOP + (TITLE_END_TOP - TITLE_START_TOP) * progress;
     title.style.top = `${titleTop}px`;
 
-    // 3) “строгая” смена цвета по зоне картинки, но НЕ весь текст сразу:
-    // белым становится только та часть строк, которая попала на фон-картинку
+    // 3) cut
     const bgRect = bg.getBoundingClientRect();
     const titleRect = title.getBoundingClientRect();
 
-    // Если заголовок пересекается с картинкой по Y:
-    // белая часть = от верха заголовка до нижней границы пересечения
     const overlapBottom = Math.min(titleRect.bottom, bgRect.bottom);
 
-    let cutPx = 0; // сколько сверху будет белым
+    let cutPx = 0;
     if (overlapBottom > titleRect.top) {
-      cutPx = overlapBottom - titleRect.top; // строго пиксели
-      // ограничим высотой заголовка
+      cutPx = overlapBottom - titleRect.top;
       cutPx = Math.max(0, Math.min(cutPx, titleRect.height));
     }
 
     title.style.setProperty("--cut", `${cutPx}px`);
   }
 
-  window.addEventListener("scroll", update, { passive: true });
-  window.addEventListener("resize", update);
-  update();
+  function requestUpdate() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  const scrollEl = document.scrollingElement || document.documentElement;
+
+  // максимально надёжно:
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  document.addEventListener("scroll", requestUpdate, { passive: true, capture: true });
+  scrollEl.addEventListener("scroll", requestUpdate, { passive: true });
+
+  window.addEventListener("resize", requestUpdate);
+  window.addEventListener("load", requestUpdate);
+
+  // первый запуск
+  requestUpdate();
 })();
+
+
+
 // ===== mini slider for bouquet cards =====
 (function () {
   const sliders = document.querySelectorAll("[data-slider]");
@@ -114,4 +131,125 @@ console.log("Project flower loaded");
     });
   });
 })();
+// ===== GLOBAL ANCHORS (single source of truth) =====
+(function () {
+  const navAnchor =
+    document.querySelector(".nav__link--active") ||
+    document.querySelector(".nav__link");
+
+  const headerContainer =
+    document.querySelector(".header__container.container") ||
+    document.querySelector(".header__container");
+
+  function update() {
+    if (!navAnchor || !headerContainer) return;
+
+    // ===== 1) GLOBAL --anchor-x (внутри КОНТЕНТА container, а не от border) =====
+    const linkRect = navAnchor.getBoundingClientRect();
+    const contRect = headerContainer.getBoundingClientRect();
+
+    const csCont = getComputedStyle(headerContainer);
+    const padLeft = parseFloat(csCont.paddingLeft) || 0;
+
+    const contentLeft = contRect.left + padLeft;
+    const anchorX = Math.round(linkRect.left - contentLeft);
+    document.documentElement.style.setProperty("--anchor-x", `${anchorX}px`);
+
+    // ===== 2) HERO images: привязка к правому краю "впечатления", но НЕ вылетать за сцену =====
+    const heroStage = document.querySelector(".hero__stage");
+    const impr = document.querySelector(".hero__line--impr");
+    const images = document.querySelector(".hero__images");
+
+    if (heroStage && impr && images) {
+      const stageRect = heroStage.getBoundingClientRect();
+      const imprRect = impr.getBoundingClientRect();
+
+      // right("впечатления") внутри hero__stage
+      const imprRightInsideStage = imprRect.right - stageRect.left;
+
+      // небольшой зазор между словом и картинками (подгони 10-40)
+      const GAP = 20;
+
+      // ширина блока картинок (берём реальную)
+      const imagesW = images.offsetWidth || 260;
+
+      // желаемый left
+      let left = Math.round(imprRightInsideStage + GAP);
+
+      // clamp: не выходить за правую границу сцены
+      const maxLeft = Math.round(stageRect.width - imagesW);
+      if (left > maxLeft) left = maxLeft;
+
+      // и не уходить в минус
+      if (left < 0) left = 0;
+
+      document.documentElement.style.setProperty("--hero-images-left", `${left}px`);
+    }
+
+    // ===== 3) CART: right(cart) == right("впечатления") без накопления transform =====
+    const cart = document.querySelector(".cart");
+    if (impr && cart) {
+      const prevTransform = cart.style.transform;
+      cart.style.transform = "translateX(0px)";
+
+      const imprRect = impr.getBoundingClientRect();
+      const cartRect0 = cart.getBoundingClientRect();
+
+      const shift = Math.round(imprRect.right - cartRect0.right);
+      document.documentElement.style.setProperty("--cart-shift", `${shift}px`);
+
+      cart.style.transform = prevTransform;
+    }
+  }
+
+  function schedule() {
+    requestAnimationFrame(update);
+  }
+
+  window.addEventListener("load", schedule);
+  window.addEventListener("resize", schedule);
+
+  // пересчёт после загрузки шрифтов (ширины текста меняются)
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(schedule);
+  }
+
+  schedule();
+})();
+// ===== MOBILE MENU (open/close) =====
+(function () {
+  const burger = document.querySelector(".m-header__burger");
+  const mnav = document.querySelector("#mnav");
+  const closeBtn = document.querySelector(".mnav__close");
+
+  if (!burger || !mnav || !closeBtn) return;
+
+  function openMenu() {
+    mnav.hidden = false;
+    burger.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    mnav.hidden = true;
+    burger.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
+  burger.addEventListener("click", openMenu);
+  closeBtn.addEventListener("click", closeMenu);
+
+  // закрытие по клику на ссылку
+  mnav.addEventListener("click", (e) => {
+    const link = e.target.closest("a");
+    if (link) closeMenu();
+  });
+
+  // закрытие по Escape
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !mnav.hidden) closeMenu();
+  });
+})();
+
+
 

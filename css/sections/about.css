@@ -1,16 +1,19 @@
 .about {
-  margin-top: 224px; /* если по макету нужно именно столько отступа от прошлого блока */
+  margin-top: 224px;
+  /* если по макету нужно именно столько отступа от прошлого блока */
+  position: relative
 }
 
-.about__stage{
+.about__stage {
   position: relative;
-  height: 1633px; /* как в фигме */
+  height: 1633px;
+  /* как в фигме */
 }
 
-/* Заголовок и подзаголовок */
-.about__title{
+/* Заголовок и подзаголовок — якорим по "Главная" */
+.about__title {
   position: absolute;
-  left: 711px; /* 801 - 90 */
+  left: var(--anchor-x, 710px);
   top: 0;
 
   margin: 0;
@@ -23,10 +26,11 @@
   color: #191818;
 }
 
-.about__subtitle{
+.about__subtitle {
   position: absolute;
-  left: 709px; /* 799 - 90 */
-  top: 110px;  /* 4247-4137 */
+  left: var(--anchor-x, 710px);
+  top: 110px;
+  /* как у тебя было (4247-4137) */
 
   margin: 0;
   width: 584px;
@@ -38,17 +42,34 @@
   color: #191818;
 }
 
+.about__note {
+  position: absolute;
+  left: var(--anchor-x, 710px);
+  top: 1578px;
+  /* как у тебя было (5715-4137) */
+
+  margin: 0;
+  width: 652px;
+
+  font-family: "Martina scriptC";
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 110%;
+  color: #A71111;
+}
+
 /* ===== круги ===== */
-.about__stats{
+.about__stats {
   position: absolute;
   left: 0;
-  top: 194px; /* стартовая зона кругов (4331-4137) */
+  top: 194px;
+  /* стартовая зона кругов (4331-4137) */
   width: 100%;
   height: 520px;
 }
 
 /* общий стиль круга */
-.stat-circle{
+.stat-circle {
   position: absolute;
   border: 1px solid #191818;
   border-radius: 50%;
@@ -58,7 +79,7 @@
 }
 
 /* содержимое текста */
-.stat-circle__content{
+.stat-circle__content {
   position: absolute;
   inset: 0;
   display: flex;
@@ -73,7 +94,7 @@
   transition: opacity .2s ease;
 }
 
-.stat-circle__num{
+.stat-circle__num {
   font-family: "Martina scriptC";
   font-weight: 400;
   font-size: 50px;
@@ -82,11 +103,11 @@
   color: #191818;
 }
 
-.stat-circle__num--xl{
+.stat-circle__num--xl {
   font-size: 70px;
 }
 
-.stat-circle__text{
+.stat-circle__text {
   margin-top: 14px;
   font-family: "Roboto Condensed", sans-serif;
   font-weight: 400;
@@ -96,7 +117,7 @@
 }
 
 /* фото на hover */
-.stat-circle::after{
+.stat-circle::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -108,31 +129,68 @@
 }
 
 /* чтобы фото было “чистым” — прячем текст, показываем фото */
-.stat-circle:hover::after{
+.stat-circle:hover::after {
   opacity: 1;
 }
-.stat-circle:hover .stat-circle__content{
+
+.stat-circle:hover .stat-circle__content {
   opacity: 0;
 }
 
 /* размеры кругов */
-.stat-circle--xl{ width: 400px; height: 400px; }
-.stat-circle--sm{ width: 250px; height: 250px; }
-.stat-circle--md{ width: 300px; height: 300px; }
-.stat-circle--lg{ width: 326px; height: 326px; }
+.stat-circle--xl {
+  width: 400px;
+  height: 400px;
+}
+
+.stat-circle--sm {
+  width: 250px;
+  height: 250px;
+}
+
+.stat-circle--md {
+  width: 300px;
+  height: 300px;
+}
+
+.stat-circle--lg {
+  width: 326px;
+  height: 326px;
+}
 
 /* позиции (пересчитано: left - 90, top - 4137) */
-.stat-circle--xl{ left: 110px; top: 0px; }     /* 200-90, 4331-4137 */
-.stat-circle--sm{ left: 710px; top: 0px; }     /* 800-90, 4331-4137 */
-.stat-circle--md{ left: 510px; top: 294px; }   /* 600-90, 4625-4137 */
-.stat-circle--lg{ left: 1030px; top: 117px; }  /* 1120-90, 4448-4137 */
+.stat-circle--xl {
+  left: 110px;
+  top: 0px;
+}
+
+/* 200-90, 4331-4137 */
+.stat-circle--sm {
+  left: 710px;
+  top: 0px;
+}
+
+/* 800-90, 4331-4137 */
+.stat-circle--md {
+  left: 510px;
+  top: 294px;
+}
+
+/* 600-90, 4625-4137 */
+.stat-circle--lg {
+  left: 1030px;
+  top: 117px;
+}
+
+/* 1120-90, 4448-4137 */
 
 
 /* ===== большое фото ===== */
-.about__photo{
+.about__photo {
   position: absolute;
   left: 0;
-  top: 848px; /* 4985-4137 */
+  top: 848px;
+  /* 4985-4137 */
 
   width: 1420px;
   height: 700px;
@@ -141,18 +199,117 @@
   display: block;
 }
 
-/* подпись снизу */
-.about__note{
-  position: absolute;
-  left: 709px; /* 799-90 */
-  top: 1578px; /* 5715-4137 */
+/* ===== ABOUT adaptive (<=1200) — FIXED ===== */
+@media (max-width: 1200px) {
 
-  margin: 0;
-  width: 652px;
+  /* stage перестаёт быть "сценой" с абсолютами */
+  .about__stage {
+    height: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 30px;
 
-  font-family: "Martina scriptC";
-  font-weight: 400;
-  font-size: 50px;
-  line-height: 110%;
-  color: #A71111;
+    /* ❌ якорь на 1200 НЕ используем, иначе всё уезжает */
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Заголовок / подзаголовок / подпись: убираем absolute */
+  .about__title,
+  .about__subtitle,
+  .about__note {
+    position: static;
+    left: auto;
+    top: auto;
+
+    width: 100%;
+    max-width: 710px;
+    margin: 0;
+  }
+
+  .about__title {
+    font-size: clamp(48px, 6vw, 80px);
+    line-height: 1;
+  }
+
+  .about__subtitle {
+    font-size: clamp(18px, 2.2vw, 22px);
+  }
+
+  .about__note {
+    font-size: clamp(28px, 4vw, 50px);
+    line-height: 110%;
+  }
+
+  /* Кружки: превращаем в сетку */
+  .about__stats {
+    position: static;
+    left: auto;
+    top: auto;
+
+    width: 100%;
+    height: auto;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+  }
+
+  /* ВАЖНО: сбрасываем absolute не только у .stat-circle,
+     но и у МОДИФИКАТОРОВ, иначе они вернут left/top обратно */
+  .about__stats .stat-circle,
+  .about__stats .stat-circle--xl,
+  .about__stats .stat-circle--lg,
+  .about__stats .stat-circle--md,
+  .about__stats .stat-circle--sm {
+    position: relative;
+    left: auto !important;
+    top: auto !important;
+    transform: none;
+  }
+
+  /* Размеры кружков делаем адаптивными */
+  .about__stats .stat-circle--xl {
+    width: clamp(260px, 34vw, 400px);
+    height: clamp(260px, 34vw, 400px);
+  }
+
+  .about__stats .stat-circle--lg {
+    width: clamp(220px, 28vw, 326px);
+    height: clamp(220px, 28vw, 326px);
+  }
+
+  .about__stats .stat-circle--md {
+    width: clamp(200px, 26vw, 300px);
+    height: clamp(200px, 26vw, 300px);
+  }
+
+  .about__stats .stat-circle--sm {
+    width: clamp(180px, 22vw, 250px);
+    height: clamp(180px, 22vw, 250px);
+  }
+
+  /* Большое фото — убираем фикс 1420px */
+  .about__photo {
+    position: static;
+    left: auto;
+    top: auto;
+
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+/* ===== ABOUT: переносим правый круг раньше (1599 -> 1200) ===== */
+@media (max-width: 1599px) and (min-width: 1201px) {
+
+  /* переносим самый правый круг вниз (чтобы не улетал за край) */
+  .stat-circle--lg {
+    left: 820px;
+    top: 294px;
+  }
 }

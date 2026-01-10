@@ -1,12 +1,15 @@
-.hero{
+.hero {
   /* В Figma hero начинается на top:200 от страницы.
      Header у нас ~170, значит для совпадения ставим 30. */
   margin-top: 30px;
 }
 
-.hero__stage{
+.hero__stage {
   position: relative;
-  height: 814px;   /* как в синей рамке 1333x814 */
+  height: 814px;
+  /* как в синей рамке 1333x814 */
+    /* якорь внутри hero (fallback если JS не отдал значение) */
+  --anchor-x-local: var(--anchor-x, 710px);
 }
 
 /* --- ТЕКСТЫ (позиции считаем относительно контейнера 1420, который в Figma начинается с left:90) --- */
@@ -14,43 +17,71 @@
    "не просто" left:177 top:200
    => внутри container: left = 177-90 = 87, top внутри hero = 200-200 = 0
 */
-.hero__line{
+.hero__line {
   position: absolute;
   color: #191818;
   white-space: nowrap;
 }
 
-.hero__line--script{
+.hero__line--script {
   font-family: "Martina scriptC";
   font-weight: 400;
-  font-size: 200px;
-  line-height: 1; /* 100% */
+  font-size: clamp(120px, 10vw, 200px);
+  line-height: 1;
+  /* 100% */
 }
 
-.hero__line--display{
+.hero__line--display {
   font-family: "DRUZHOK";
   font-weight: 400;
-  font-size: 130px;
-  line-height: 1; /* 100% */
+  font-size: clamp(80px, 7vw, 130px);
+  line-height: 1;
+  /* 100% */
 }
 
 /* Позиции строк (из Figma, пересчитаны относительно container и hero) */
-.hero__line--np{      left: 87px;  top: 0px; }     /* 177-90, 200-200 */
-.hero__line--bouquets{left: 228px; top: 229px; }   /* 318-90, 429-200 */
-.hero__line--a{       left: 173px; top: 320px; }   /* 263-90, 520-200 */
-.hero__line--impr{    left: 275px; top: 389px; }   /* 365-90, 589-200 */
+.hero__line--np {
+  left: 87px;
+  top: 0px;
+}
+
+/* 177-90, 200-200 */
+.hero__line--bouquets {
+  left: 228px;
+  top: 229px;
+}
+
+/* 318-90, 429-200 */
+.hero__line--a {
+  left: 173px;
+  top: 320px;
+}
+
+/* 263-90, 520-200 */
+.hero__line--impr {
+  left: 275px;
+  top: 389px;
+}
+
+/* 365-90, 589-200 */
 
 /* --- КАРТИНКИ --- */
 .hero__images{
   position: absolute;
-  right: 90px;   /* справа как в макете от границы контейнера */
-  top: 0px;
+  top: 0;
   width: 260px;
   height: 320px;
+
+  /* вместо right: var(--gutter) */
+  
+  left: calc(var(--hero-images-left, 1060px) - var(--hero-images-shift-left, 0px)); /* fallback на всякий */
+
+  will-change: left;
 }
 
+
 /* передняя */
-.hero__image--front{
+.hero__image--front {
   position: absolute;
   width: 202px;
   height: 270px;
@@ -61,12 +92,13 @@
 }
 
 /* задняя: прозрачнее и под углом */
-.hero__image--back{
+.hero__image--back {
   position: absolute;
   width: 179.09px;
   height: 238.79px;
   right: 0;
-  top: 56px;             /* как в фигме */
+  top: 56px;
+  /* как в фигме */
   opacity: 0.5;
   transform: rotate(15deg);
   z-index: 1;
@@ -79,9 +111,10 @@
    Отнимаем container left 90 => x=710
    top: 773 => внутри hero: 573
 */
+/* --- ОПИСАНИЕ --- */
 .hero__desc{
   position: absolute;
-  left: 710px;
+  left: var(--anchor-x-local);
   top: 573px;
 
   margin: 0;
@@ -96,10 +129,9 @@
 }
 
 /* --- КНОПКА --- */
-/* В Figma: left ~802 => 802-90 = 712; top: 881 => внутри hero: 681 */
 .hero__btn{
   position: absolute;
-  left: 712px;
+  left: calc(var(--anchor-x-local) + 2px); /* чтобы совпасть с прежними 712px */
   top: 681px;
 
   width: 133px;
@@ -119,4 +151,33 @@
   font-size: 16px;
   line-height: 140%;
   text-transform: uppercase;
+}
+
+
+/* отдельный сдвиг ТОЛЬКО для hero-заголовка */
+:root{
+  --hero-title-x: 0px; /* меняй тут: - влево, + вправо */
+}
+
+.hero__line{
+  position: absolute;
+  transform: translateX(var(--hero-title-x));
+  will-change: transform;
+}
+@media (max-width: 1200px){
+  .hero__images{
+    display: none;
+  }
+
+  .hero__desc{
+    width: 100%;
+    max-width: 360px;
+  }
+}
+.hero__line--script{
+  font-size: clamp(120px, 10vw, 200px);
+}
+
+.hero__line--display{
+  font-size: clamp(80px, 7vw, 130px);
 }

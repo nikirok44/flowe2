@@ -172,47 +172,108 @@
 }
 
 /* ====== PRE-CATALOG bottom (quote + button) ====== */
-.precatalog__bottom {
-    margin-top: 60px;
-    margin-left: 700px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    /* ключевое */
+/* переменные раскладки (как в макете: 3 карточки по 450 и gap 35) */
+.precatalog{
+  --card-w: 450px;
+  --gap: 35px;
+
+  /* центр кружка цены внутри карточки:
+     price left=340, width=100 => центр = 340 + 50 = 390 */
+  --price-center-x: 390px;
+
+  /* размер кнопки */
+  --catalog-btn: 133px;
 }
 
-/* цитата */
-.precatalog__quote {
-    margin: 0;
-    width: 424px;
-    font-family: "Martina scriptC";
-    font-weight: 400;
-    font-size: 50px;
-    line-height: 110%;
-    color: #A71111;
+.precatalog__bottom{
+  position: relative;
+  margin-top: 60px;
+  min-height: var(--catalog-btn); /* чтобы кнопке было куда встать */
 }
 
-/* кнопка */
-.precatalog__catalog-btn {
-    width: 133px;
-    height: 133px;
-    border-radius: 50%;
-    border: 2px solid #191818;
+/* Цитата: якорим по твоей линии "Главная" */
+.precatalog__quote{
+  margin: 0;
+  width: 424px;
 
-    display: flex;
-    align-items: center;
+  margin-left: var(--anchor-x, 710px);
+
+  font-family: "Martina scriptC";
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 110%;
+  color: #A71111;
+}
+
+/* Кнопка: ставим под кружок цены на 3-й карточке */
+.precatalog__catalog-btn{
+  position: absolute;
+  top: 0;
+
+  width: var(--catalog-btn);
+  height: var(--catalog-btn);
+  border-radius: 50%;
+  border: 2px solid #191818;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 140%;
+  color: #191818;
+
+  /* left = начало 3-й карточки + центр цены - половина кнопки
+     начало 3-й карточки = 2 * (card + gap) */
+  left: calc(
+    (2 * (var(--card-w) + var(--gap))) +
+    var(--price-center-x) -
+    (var(--catalog-btn) / 2)
+  );
+}
+/* ========== PRODUCTS 1600 -> 1200 ========== */
+@media (max-width: 1600px) {
+  .precatalog__row{
+    flex-wrap: wrap;
     justify-content: center;
+  }
+  .bouquet-card{
+    width: min(450px, 100%);
+  }
+  .bouquet-card__media{
+    width: 100%;
+  }
+}
 
-    text-decoration: none;
-    text-align: center;
-    text-transform: uppercase;
+/* на 1200: низ перестаёт быть “под 3-ю карточку” */
+@media (max-width: 1200px) {
+  .precatalog__bottom{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .precatalog__quote{
+    margin-left: 0;       /* если был якорь/auto */
+    max-width: 424px;
+  }
+  .precatalog__catalog-btn{
+    position: static;     /* сброс любых absolute/calc */
+    margin-left: auto;
+  }
+}
 
-    font-family: "Inter", sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 140%;
-    color: #191818;
-
-    flex: 0 0 133px;
-    /* чтобы не сжималась */
+@media (max-width: 768px) {
+  .precatalog__bottom{
+    flex-direction: column;
+  }
+  .precatalog__catalog-btn{
+    margin-left: 0;
+  }
 }

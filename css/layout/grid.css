@@ -1,6 +1,21 @@
+:root {
+  --gutter: clamp(10px, 3vw, 90px);
+  --hero-images-shift-left: clamp(200px, 3vw, 90px);
+  /* 90px на больших экранах как в Figma, меньше на узких */
+}
+
 /* Контейнер контента */
 .container {
-  max-width: 1420px;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
 }

@@ -1,0 +1,76 @@
+/* =========================
+   FEATURES — MOBILE (<=1199)
+   Только центровка + нормальная колонка
+   ========================= */
+@media (max-width: 1199px) {
+
+    /* контейнер — по центру */
+    .features .container {
+        display: flex;
+        justify-content: center;
+    }
+
+    /* ВАЖНО: на мобиле делаем КОЛОНКУ, чтобы заголовок был СВЕРХУ */
+    .features__wrap {
+        width: min(362px, 100%);
+        margin: 0 auto;
+
+        display: flex;
+        flex-direction: column;
+        /* <-- фикс: заголовок сверху */
+        align-items: center;
+        /* <-- центрируем блок целиком */
+    }
+
+    /* заголовок как в макете, но в рамках 362px */
+    .features__title {
+        width: 100%;
+        max-width: 362px;
+        margin: 0 0 60px 0;
+
+        font-family: "DRUZHOK";
+        font-size: 40px;
+        line-height: 99.98%;
+
+        text-align: left;
+        /* в фигме он не по центру */
+    }
+
+    /* список фиксированной ширины */
+    .features__list {
+        width: 100%;
+        max-width: 361px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    /* пункты — текст + линия */
+    .features__item {
+        width: 100%;
+    }
+
+    .features__item p {
+        margin: 0;
+        width: 100%;
+
+        font-family: "Roboto Condensed", sans-serif;
+        font-size: 22px;
+        line-height: 110%;
+        color: #191818;
+    }
+
+    .features__item span {
+        display: block;
+        width: 100%;
+        height: 1px;
+        margin-top: 30px;
+        background: #191818;
+    }
+}
+
+
+.features {
+    margin-top: 200px;
+}

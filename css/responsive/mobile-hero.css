@@ -1,0 +1,106 @@
+/* css/responsive/mobile-hero.css */
+
+/* MOBILE HERO (<=1199px) — макет 390 */
+@media (max-width: 1199px) {
+
+  /* на мобиле якоря и выравнивание по "Главная" не нужны */
+  .hero__stage{
+    height: 685px;              /* как в макете */
+  }
+
+  /* отменяем общий десктопный сдвиг заголовка */
+  .hero__line{
+    transform: translateX(0);
+  }
+
+  /* ТЕКСТЫ — как в Figma 390 */
+  .hero__line--script{
+    font-size: clamp(44px, 12vw, 60px);
+    line-height: 1;
+  }
+
+  .hero__line--display{
+    font-size: clamp(28px, 9.5vw, 38px);
+    line-height: 1;
+  }
+
+  .hero__line--np{
+    left: 10px;
+    top: 371px;
+  }
+
+  .hero__line--bouquets{
+    left: 11px;
+    top: 439px;
+  }
+
+  .hero__line--a{
+    left: 10px;
+    top: 466px;
+  }
+
+  .hero__line--impr{
+    left: 43px;
+    top: 486px;
+  }
+
+  /* КАРТИНКИ — ВКЛЮЧАЕМ обратно (перебиваем твой max-width:1200 display:none) */
+  .hero__images{
+    display: block;
+    width: 200px;
+    height: 260px;
+    left: 50%;
+    top: 120px;
+    transform: translateX(-50%);
+    will-change: transform;
+  }
+
+  .hero__image--front{
+    width: 177px;
+    height: 236px;
+    right: auto;
+    left: 50%;
+    top: 0;
+    transform: translateX(-50%);
+  }
+
+  .hero__image--back{
+    width: 157px;
+    height: 209px;
+    right: auto;
+    left: 50%;
+    top: 48px;
+    opacity: 0.5;
+    transform: translateX(-35%) rotate(15deg);
+  }
+
+  /* ОПИСАНИЕ — по центру */
+  .hero__desc{
+    left: 50%;
+    top: 564px;
+    transform: translateX(-50%);
+    width: 234px;
+    text-align: center;
+  }
+
+  /* КНОПКА — по центру */
+  .hero__btn{
+    left: 50%;
+    top: 672px;
+    transform: translateX(-50%);
+    width: 133px;
+    height: 133px;
+  }
+}
+
+/* На очень узких (<=360) чуть ужимаем кнопку/отступы */
+@media (max-width: 360px){
+  .hero__stage{ height: 660px; }
+
+  .hero__btn{
+    width: 120px;
+    height: 120px;
+    top: 662px;
+    border-radius: 60px;
+  }
+}

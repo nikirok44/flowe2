@@ -2,10 +2,11 @@
   margin-top: 200px; /* смещение блока относительно предыдущего */
 }
 
-.features__wrap{
-  max-width: 710px; /* как в Figma */
-  margin-left: auto; /* блок справа */
+.features__wrap {
+  margin-left: var(--anchor-x);
+
 }
+
 
 .features__title{
   font-family: "DRUZHOK";

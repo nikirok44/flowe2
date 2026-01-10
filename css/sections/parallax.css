@@ -3,58 +3,74 @@
   position: relative;
   height: 860px;
   overflow: hidden;
+  overflow-x: clip;
+  /* ✅ добавь (лучше чем hidden) */
 }
 
-/* Фон (верхние 614px) */
+/* container нужен только для якорения заголовка */
+.parallax .container {
+  position: relative;
+  height: 100%;
+  z-index: 2;
+}
+
+/* ФОН: всегда 100vw и центрирован по X (чтобы НЕ уезжал влево/вправо) */
 .parallax__bg {
   position: absolute;
-  left: 0;
   top: 0;
-  width: 100%;
+  left: 0;
+  right: 0;
+  /* вместо width:100vw */
   height: 614px;
 
-  background:
-    linear-gradient(rgba(193, 21, 21, 0.3), rgba(193, 21, 21, 0.3)),
-    url("../../assets/images/hero/flowers_parallax.png");
-  background-size: cover;
-  background-position: center;
+  background-color: #A71111;
 
-  transform: translate3d(0, 0, 0);
+  background-image:
+    linear-gradient(rgba(193, 21, 21, .3), rgba(193, 21, 21, .3)),
+    url("../../assets/images/hero/flowers_parallax.png");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  /* ВАЖНО: JS двигает переменную --bg-y */
+  transform: translate3d(0, var(--bg-y, 0px), 0);
   will-change: transform;
+
+  z-index: 1;
 }
 
-/* Заголовок: один слой, цвет режем “строго” по границе картинки */
+
+/* ЗАГОЛОВОК: теперь якорится внутри container (без calc(100vw - 1420)) */
 .parallax__title {
   position: absolute;
-  left: 798px;
 
-  /* стартовое значение (JS будет менять) */
+  /* +65px — если тебе надо как в макете чуть правее линии */
+  left: calc(var(--anchor-x, 0px) + 65px);
+
+  /* стартовое значение (JS меняет top) */
   top: 583px;
 
   width: 712px;
   height: 240px;
+  margin: 0;
 
   font-family: "DRUZHOK";
   font-weight: 400;
   font-size: 80px;
-  line-height: 0.9998;
+  line-height: 99.98%;
 
-  margin: 0;
   z-index: 2;
 
-  /* Ключевая штука: делаем текст прозрачным, а цвет рисуем фоном */
+  /* “строгая” смена цвета через --cut из JS */
   color: transparent;
-
-  /* Переменная, которую будет ставить JS: сколько пикселей сверху белым */
   --cut: 0px;
 
-  background: linear-gradient(
-    to bottom,
-    #ffffff 0,
-    #ffffff var(--cut),
-    #191818 var(--cut),
-    #191818 100%
-  );
+  background: linear-gradient(to bottom,
+      #ffffff 0,
+      #ffffff var(--cut),
+      #191818 var(--cut),
+      #191818 100%);
 
   -webkit-background-clip: text;
   background-clip: text;

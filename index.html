@@ -1,9 +1,6 @@
-<!doctype html>
-<html lang="ru">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Букетная лавка</title>
 
   <!-- base -->
@@ -27,35 +24,75 @@
   <link rel="stylesheet" href="css/sections/reviews.css" />
   <link rel="stylesheet" href="css/sections/delivery.css" />
 
+  <!-- ✅ mobile only -->
+  <link rel="stylesheet" href="css/responsive/mobile-header.css" media="(max-width: 1199px)" />
+  <link rel="stylesheet" href="css/responsive/mobile-hero.css" />
+  <link rel="stylesheet" href="css/responsive/mobile-features.css" />
+
   <!-- main (overrides) -->
   <link rel="stylesheet" href="css/main.css" />
 </head>
+
 
 <body>
   <!-- Имитация Desktop Frame 1600px как в Figma -->
   <div class="page-frame">
 
-    <!-- HEADER (вставлен напрямую) -->
     <header class="header">
       <div class="header__container container">
 
+        <!-- LOGO -->
         <a class="logo" href="index.html">
           <span class="logo__title">Букетная лавка</span>
           <span class="logo__city">в Ноябрьске</span>
         </a>
 
+        <!-- DESKTOP NAV -->
         <nav class="nav" aria-label="Навигация">
           <a class="nav__link nav__link--active" href="index.html">ГЛАВНАЯ</a>
           <a class="nav__link" href="#catalog">КАТАЛОГ</a>
           <a class="nav__link" href="#corp">КОРПОРАТИВНЫМ КЛИЕНТАМ</a>
         </nav>
 
+        <!-- DESKTOP CART -->
         <a class="cart" href="#">
           <span class="cart__text">КОРЗИНА</span>
         </a>
 
+        <!-- ✅ MOBILE BURGER -->
+        <button class="m-header__burger" type="button" aria-label="Открыть меню">
+          <span class="m-burger__circle" aria-hidden="true"></span>
+          <span class="m-burger__lines" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </span>
+        </button>
+
       </div>
     </header>
+
+    <div class="mnav" id="mnav" hidden>
+      <button class="mnav__close" type="button" aria-label="Закрыть меню">
+        ✕
+      </button>
+
+      <div class="mnav__content">
+        <a class="mnav__logo" href="index.html">
+          <span class="logo__title">Букетная лавка</span>
+          <span class="logo__city">в Ноябрьске</span>
+        </a>
+
+        <nav class="mnav__links" aria-label="Навигация">
+          <a class="nav__link nav__link--active" href="index.html">ГЛАВНАЯ</a>
+          <a class="nav__link" href="#catalog">КАТАЛОГ</a>
+          <a class="nav__link" href="#corp">КОРПОРАТИВНЫМ КЛИЕНТАМ</a>
+        </nav>
+
+        <a class="mnav__cart" href="#">
+          <span class="cart__text">КОРЗИНА</span>
+        </a>
+      </div>
+    </div>
+
 
     <main>
       <section class="hero">
@@ -137,10 +174,13 @@
       <section class="parallax">
         <div class="parallax__bg"></div>
 
-        <h2 class="parallax__title" data-parallax-title>
-          Найдите свой<br>идеальный<br>букет
-        </h2>
+        <div class="container">
+          <h2 class="parallax__title" data-parallax-title>
+            Найдите свой<br>идеальный<br>букет
+          </h2>
+        </div>
       </section>
+
       <section class="precatalog" id="precatalog">
         <div class="container">
           <div class="precatalog__row">

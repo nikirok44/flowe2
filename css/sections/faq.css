@@ -188,3 +188,49 @@
 .faq__note {
   color: rgba(25, 24, 24, 0.5);
 }
+.faq__inner{
+  width: 710px;
+  margin-left: var(--anchor-x, 710px); /* ← якорь по "Главная" */
+  margin-right: 0;
+  padding: 0;                           /* важно: не давим линиями */
+}
+
+.faq__title{
+  width: 710px;
+  margin: 0 0 60px;
+  margin-left: var(--anchor-x, 710px);  /* ← якорь по "Главная" */
+}
+/* ========== FAQ 1600 -> 1200 ========== */
+@media (max-width: 1600px) {
+  .faq__inner,
+  .faq__title{
+    width: 100%;
+    max-width: 710px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* если faq у тебя “прижат” якорем — на 1200 лучше снять */
+@media (max-width: 1200px) {
+  .faq__inner,
+  .faq__title{
+    margin-left: auto;
+  }
+}
+/* ========== PARALLAX 1600 -> 1200 ========== */
+@media (max-width: 1600px) {
+  .parallax__title{
+    width: min(712px, 92%);
+    font-size: clamp(52px, 5vw, 80px);
+  }
+}
+
+@media (max-width: 1200px) {
+  .parallax{
+    height: 760px; /* чтобы меньше “пустоты” */
+  }
+  .parallax__bg{
+    background-position: center center;
+  }
+}

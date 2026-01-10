@@ -92,3 +92,32 @@
     justify-content: center;
   }
 }
+/* ===== REVIEWS: anchor middle card center to --anchor-x ===== */
+.reviews__row{
+  /* сдвигаем ряд так, чтобы центр 2-й карточки (710px) попал на якорь */
+  transform: translateX(calc(var(--anchor-x, 710px) - 710px));
+  will-change: transform;
+}
+/* ========== REVIEWS 1600 -> 1200 ========== */
+@media (max-width: 1600px) {
+  .reviews__row{
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .review-card{
+    width: min(450px, 100%);
+  }
+  .review-card__box{
+    width: 100%;
+  }
+}
+
+/* если где-то есть якорение transform — обязательно обнуляем на 1200 */
+@media (max-width: 1200px) {
+  .reviews__row{
+    transform: none;
+  }
+}
+
+
+
