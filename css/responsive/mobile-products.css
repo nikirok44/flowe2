@@ -1,0 +1,147 @@
+/* =======================
+   MOBILE PRODUCTS (<=1199)
+   ======================= */
+@media (max-width: 1512px) {
+
+    /* расстояние между parallax и products = 120px */
+    .precatalog {
+        margin-top: 300px;
+        margin-bottom: 60px;
+    }
+
+    /* делаем только 2 карточки вместо 3 */
+    .precatalog__row .bouquet-card:nth-child(n + 3) {
+        display: none;
+    }
+
+    /* раскладка карточек вертикально */
+    .precatalog__row {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        /* как в макете */
+    }
+
+    /* CARD под 390 */
+    .bouquet-card {
+        width: min(370px, 100%);
+        height: auto;
+    }
+
+    .bouquet-card__media {
+        width: 100%;
+        height: 452px;
+        /* как в фигме */
+        border-radius: 16.45px;
+    }
+
+    /* Название */
+    .bouquet-card__name {
+        left: 12px;
+        top: auto;
+        bottom: 10px;
+        width: 220px;
+        font-size: 23px;
+        line-height: 85%;
+    }
+
+    /* Точки */
+    .bouquet-card__dots {
+        left: 50%;
+        top: auto;
+        bottom: 26px;
+        transform: translateX(-50%);
+        gap: 8px;
+    }
+
+    .bouquet-card__dot {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Красный круг с ценой */
+    .bouquet-card__price {
+        width: 82px;
+        height: 82px;
+        right: 10px;
+        left: auto;
+        top: auto;
+        bottom: 10px;
+    }
+
+    .bouquet-card__price-value {
+        font-size: 23px;
+    }
+
+    /* Белый круг "букет недели" (если есть) */
+    .bouquet-card__badge {
+        width: 82px;
+        height: 82px;
+        left: auto;
+        right: 10px;
+        top: 10px;
+        font-size: 18px;
+    }
+
+    /* ===== низ блока: (cards -> button 30px) и (button -> quote 30px) ===== */
+    .precatalog__bottom {
+        margin-top: 30px;
+        /* между cards и кнопкой */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        /* между кнопкой и подписью */
+        min-height: unset;
+    }
+
+    /* кнопка "смотреть каталог" */
+    .precatalog__catalog-btn {
+        position: static;
+        width: 133px;
+        height: 133px;
+        border-radius: 65px;
+        margin: 0;
+        order: 1;
+        /* сначала кнопка */
+    }
+
+    /* надпись красная */
+    .precatalog__quote {
+        order: 2;
+        margin: 0;
+
+        /* ВАЖНО: не зажимаем в 371px на экранах шире 390,
+       иначе перенос часто уходит в 3 строки */
+        width: min(440px, 100%);
+
+        font-size: clamp(34px, 10vw, 50px);
+        line-height: 110%;
+
+        text-align: left;
+    }
+}
+
+/* На очень узких — чуть ужимаем карточку */
+@media (max-width: 390px) {
+    .bouquet-card__media {
+        height: 440px;
+    }
+}
+
+
+/* ========= FIX: при 440px и выше — ровно 2 строки у цитаты ========= */
+@media (min-width: 440px) and (max-width: 1199px) {
+    .precatalog__quote {
+        /* делаем аккуратное ограничение на 2 строки */
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+
+        /* чтобы не получалась “полоса” по всей ширине */
+        max-width: 440px;
+    }
+    
+}
+

@@ -1,0 +1,219 @@
+/* css/responsive/mobile-about.css */
+/* MOBILE ABOUT (<=1199px) — макет 390 */
+
+@media (max-width: 1199px) {
+
+    /* отступ от прошлого блока */
+    .about {
+        margin-top: 120px;
+    }
+
+    /* контент 370 при экране 390 (по 10px слева/справа) */
+    .about .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .about__stage {
+        position: relative;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about__title {
+        position: static;
+        width: 370px;
+        margin: 0 auto 30px;
+        text-align: left;
+        font-size: 40px;
+        line-height: 1;
+    }
+
+    .about__subtitle {
+        position: static;
+        width: 370px;
+        margin: 0 auto 60px;
+        text-align: left;
+        font-size: 22px;
+        line-height: 110%;
+    }
+
+    /* ===== CIRCLES (Figma positions) ===== */
+    .about__stats {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 370px !important;
+
+        /* базовая высота под 4 круга */
+        height: 760px !important;
+
+        /* 60px от subtitle до кружков */
+        margin: 0px auto 0 !important;
+
+        /* масштабируем на узких, чтобы НЕ было наложений и НЕ пропадали */
+        --s: 1;
+        transform: scale(var(--s));
+        transform-origin: top center;
+    }
+
+    .about__stats .stat-circle {
+        position: absolute !important;
+        inset: auto !important;
+        margin: 0 !important;
+    }
+
+    /* размеры как в Figma */
+    .about__stats .stat-circle--xl {
+        width: 252px !important;
+        height: 252px !important;
+    }
+
+    .about__stats .stat-circle--md {
+        width: 202px !important;
+        height: 202px !important;
+    }
+
+    .about__stats .stat-circle--sm {
+        width: 188px !important;
+        height: 188px !important;
+    }
+
+    .about__stats .stat-circle--lg {
+        width: 228px !important;
+        height: 228px !important;
+    }
+
+    /* позиции как в Figma (без наложений) */
+    .about__stats .stat-circle--xl {
+        left: 9px !important;
+        top: 0px !important;
+    }
+
+    .about__stats .stat-circle--md {
+        left: 169px !important;
+        top: 232px !important;
+    }
+
+    .about__stats .stat-circle--sm {
+        left: 1px !important;
+        top: 385px !important;
+    }
+
+    .about__stats .stat-circle--lg {
+        left: 143px !important;
+        top: 532px !important;
+    }
+
+    /* Тексты в кругах (база) */
+    .stat-circle__num--xl {
+        font-size: 70px;
+    }
+
+    .stat-circle__num {
+        font-size: 50px;
+    }
+
+    .stat-circle__text {
+        font-size: 22px;
+        line-height: 110%;
+    }
+
+    /* ===== PHOTO (mobile) ===== */
+    .about__photo {
+        position: static;
+        left: auto;
+        top: auto;
+        transform: none;
+
+        display: block;
+        width: 100%;
+        max-width: 370px;
+        height: auto;
+
+        /* 60px от кружков до фото, 30px до подписи */
+        margin: 0px auto 30px;
+
+        content: url("../../assets/images/hero/mobile_about_picture.png");
+    }
+
+    /* ===== NOTE ===== */
+    .about__note {
+        position: static;
+        width: 370px;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 50px;
+        line-height: 110%;
+    }
+}
+
+/* ===== узкие экраны: уменьшаем subtitle/note и убираем "пустоту" между кружками и фото ===== */
+@media (max-width: 400px) {
+
+    .about__title,
+    .about__subtitle,
+    .about__note {
+        width: min(370px, calc(100vw - 20px));
+    }
+
+    /* subtitle и note "пропадали" потому что не влезали по ширине/размеру —
+     уменьшаем шрифты адаптивно */
+    .about__subtitle {
+        font-size: clamp(16px, 4.8vw, 22px);
+        line-height: 110%;
+        margin-bottom: 50px;
+        /* чуть меньше, чтобы блок был компактнее */
+    }
+
+    .about__note {
+        font-size: clamp(28px, 8.5vw, 50px);
+        line-height: 110%;
+    }
+
+    /* сильнее уменьшаем круги через scale */
+    .about__stats {
+        --s: 0.82;
+    }
+
+    /* ✅ ВАЖНО: когда scale меньше — реальная высота stats уменьшается визуально,
+     но layout всё равно держит "старую" высоту 760 => появляется пустота.
+     Поэтому уменьшаем высоту пропорционально scale. */
+    .about__stats {
+        height: 625px !important;
+    }
+
+    /* и чуть уменьшаем расстояние от кружков до фото (чтобы не было большой пустоты) */
+    .about__photo {
+        margin-top: 0px;
+    }
+}
+
+@media (max-width: 360px) {
+    .about__stats {
+        --s: 0.76;
+    }
+
+    .about__stats {
+        height: 580px !important;
+    }
+
+    .about__photo {
+        margin-top: 35px;
+    }
+}
+
+@media (max-width: 340px) {
+    .about__stats {
+        --s: 0.70;
+    }
+
+    .about__stats {
+        height: 540px !important;
+    }
+
+    .about__photo {
+        margin-top: 30px;
+    }
+}

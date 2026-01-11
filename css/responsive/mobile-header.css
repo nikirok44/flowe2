@@ -1,169 +1,191 @@
 @media (max-width: 1199px) {
-
-  /* прячем десктопные nav/cart */
-  .nav,
-  .cart {
-    display: none;
+  header {
+    margin-bottom: 30px;
+    /* ВОТ ЭТО и есть твои нужные 30px */
   }
 
   .header__container {
-    height: 70px;
     padding-top: 20px;
     padding-bottom: 0;
-    align-items: center;
+    height: 70px;
   }
+}
 
-  /* ===== LOGO (mobile) ===== */
-  .logo {
-    width: auto;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    text-align: left;
-    gap: 0;
-  }
+/* прячем десктопные nav/cart */
+.nav,
+.cart {
+  display: none;
+}
 
-  .logo__title,
-  .logo__city {
-    display: block;
-    white-space: nowrap;
-  }
+.header__container {
+  height: 70px;
+  padding-top: 20px;
+  padding-bottom: 0;
+  align-items: center;
+}
 
-  .logo__title {
-    font-size: 50px;
-    line-height: 70px;
-    color: #191818;
-  }
+/* ===== LOGO (mobile) ===== */
+.logo {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0;
+}
 
-  .logo__city {
-    font-size: 18px;
-    line-height: 110%;
-    color: #A71111;
-    margin-top: -6px;
-  }
+.logo__title,
+.logo__city {
+  display: block;
+  white-space: nowrap;
+}
 
-  /* ===== burger button ===== */
-  .m-header__burger {
-    display: block;
-    position: relative;
-    width: 50px;
-    height: 50px;
-    border: 0;
-    background: transparent;
-    padding: 0;
-    cursor: pointer;
+.logo__title {
+  font-size: 50px;
+  line-height: 70px;
+  color: #191818;
+}
 
-    flex: none;      /* ✅ чтобы не сжимался/не исчезал во flex */
-    z-index: 10;     /* ✅ чтобы не перекрывался */
-  }
+.logo__city {
+  font-size: 18px;
+  line-height: 110%;
+  color: #A71111;
+  margin-top: -6px;
+}
 
-  .m-burger__circle {
-    position: absolute;
-    inset: 0;
-    border: 1px solid #191818;
-    border-radius: 50%;
-  }
+/* ===== burger button ===== */
+.m-header__burger {
+  display: block;
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
 
-  .m-burger__lines {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 30px;
-    height: 16px;
-    transform: translate(-50%, -50%);
-    display: grid;
-    gap: 5px;
-  }
+  flex: none;
+  /* ✅ чтобы не сжимался/не исчезал во flex */
+  z-index: 10;
+  /* ✅ чтобы не перекрывался */
+}
 
-  .m-burger__lines span {
-    display: block;
-    height: 2px;
-    width: 30px;
-    background: #191818;
-    border-radius: 8px;
-  }
+.m-burger__circle {
+  position: absolute;
+  inset: 0;
+  border: 1px solid #191818;
+  border-radius: 50%;
+}
 
-  /* ===== overlay ===== */
-  .mnav[hidden] {
-    display: none;
-  }
+.m-burger__lines {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 30px;
+  height: 16px;
+  transform: translate(-50%, -50%);
+  display: grid;
+  gap: 5px;
+}
 
-  .mnav {
-    display: block;
-    position: fixed;
-    inset: 0;
-    background: #FFD5D5;
-    z-index: 9999;
-  }
+.m-burger__lines span {
+  display: block;
+  height: 2px;
+  width: 30px;
+  background: #191818;
+  border-radius: 8px;
+}
 
-  .mnav__close {
-    position: absolute;
-    top: 30px;
-    right: 10px;
-    width: 40px;
-    height: 40px;
-    border-radius: 17px;
-    border: 0;
-    background: transparent;
-    font-size: 22px;
-    color: #191818;
-    cursor: pointer;
-  }
+/* ===== overlay ===== */
+.mnav[hidden] {
+  display: none;
+}
 
-  .mnav__content {
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(249px, 90vw);
-    height: calc(100vh - 20px);
+.mnav {
+  display: block;
+  position: fixed;
+  inset: 0;
+  background: #FFD5D5;
+  z-index: 9999;
+}
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-  }
+.mnav__close {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 17px;
+  border: 0;
+  background: transparent;
+  font-size: 22px;
+  color: #191818;
+  cursor: pointer;
+}
 
-  .mnav__logo {
-    text-decoration: none;
-    text-align: center;
-  }
+.mnav__content {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(249px, 90vw);
+  height: calc(100vh - 20px);
 
-  .mnav__logo .logo {
-    align-items: center;
-    text-align: center;
-  }
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 
-  .mnav__links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-  }
+.mnav__logo {
+  text-decoration: none;
+  text-align: center;
+}
 
-  .mnav__links .nav__link {
-    font-size: 18px;
-    line-height: 25px;
-    text-transform: uppercase;
-    color: #191818;
-    text-decoration: none;
-  }
+.mnav__logo .logo {
+  align-items: center;
+  text-align: center;
+}
 
-  .mnav__cart {
-    width: 94px;
-    height: 92px;
-    border-radius: 51px;
-    border: 1px solid #191818;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-  }
+.mnav__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
 
-  .mnav__cart .cart__text {
-    color: #191818;
-  }
+.mnav__links .nav__link {
+  font-size: 18px;
+  line-height: 25px;
+  text-transform: uppercase;
+  color: #191818;
+  text-decoration: none;
+}
+
+.mnav__cart {
+  width: 94px;
+  height: 92px;
+  border-radius: 51px;
+  border: 1px solid #191818;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.mnav__cart .cart__text {
+  color: #191818;
+}
+
+/* === MOBILE HEADER: скрываем город === */
+.header .logo__city {
+  display: none;
+}
+
+/* === MOBILE MENU (overlay): город показываем === */
+.mnav .logo__city {
+  display: inline;
 }

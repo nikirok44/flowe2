@@ -1,0 +1,80 @@
+/* MOBILE FAQ (<=1199px) — фикс выравнивания текста */
+
+@media (max-width: 1199px) {
+
+    .faq {
+        margin-top: 120px;
+    }
+
+    .faq .container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .faq__title {
+        width: min(370px, calc(100vw - 20px));
+        margin: 0 auto 60px;
+        text-align: left;
+    }
+
+
+    .faq__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .faq__item {
+        width: 100%;
+    }
+
+    .faq__question {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        font-size: 22px;
+        line-height: 110%;
+    }
+
+    .faq__qtext {
+        max-width: 260px;
+        display: block;
+        text-align: left;
+        /* ✅ фикс */
+        margin: 0;
+        /* ✅ фикс */
+    }
+
+    .faq__icon {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+    }
+
+    /* ✅ ВОТ ГЛАВНЫЙ ФИКС: ответ всегда слева */
+    .faq__answer {
+        padding-bottom: 30px;
+        text-align: left;
+        /* ✅ фикс */
+    }
+
+    .faq__answer p {
+        margin: 0;
+        /* ✅ фикс */
+        text-align: left;
+        /* ✅ фикс */
+        display: block;
+        /* ✅ если где-то было flex */
+        justify-content: initial;
+        align-items: initial;
+    }
+
+    .faq__note {
+        display: block;
+        margin-top: 10px;
+        text-align: left;
+        /* ✅ фикс */
+        font-size: 14px;
+        opacity: 0.7;
+    }
+
+}
